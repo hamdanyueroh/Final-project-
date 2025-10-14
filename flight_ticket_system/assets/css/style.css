@@ -97,10 +97,6 @@ body{
   font-size:.95rem; color:#475569;
 }
 
-/* ===== Misc ===== */
-.trust-logos img{ height:26px; opacity:.75; filter:grayscale(100%); margin-right:14px; }
-.trust-logos img:last-child{ margin-right:0; }
-
 .form-text-hint{ color:#64748b; font-size:.9rem; }
 
 .stepper{display:flex;gap:.5rem;align-items:center;margin-bottom:1rem}
@@ -197,3 +193,8 @@ body{
 
 /* Utility (บางบราวเซอร์ไม่มี bg-white/20) */
 .bg-white\/20{ background: rgba(255,255,255,.2); }
+
+footer .text-muted {
+  font-size: 0.9rem;
+  color: #666;
+}

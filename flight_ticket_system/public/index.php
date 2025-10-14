@@ -1,26 +1,136 @@
 <?php
-require_once __DIR__.'/../includes/header.php';
-require_once __DIR__.'/../includes/csrf.php';
+require_once __DIR__ . '/../includes/header.php';
+require_once __DIR__ . '/../includes/csrf.php';
 ?>
 
 <?php if (!current_user()): ?>
   <!-- ========= WELCOME (ยังไม่ล็อกอิน) ========= -->
+
+  <!-- 🔹 FlightSys Promotion Carousel (Fade Transition) -->
+  <div id="promoCarousel" class="carousel slide carousel-fade mb-4" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner rounded-4 shadow-lg overflow-hidden">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active position-relative">
+        <img src="../assets/img/promo1.jpg" class="d-block w-100" alt="Promo 1">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-caption">
+          <h5>✈️ โปรโมชั่นบินในประเทศลดสูงสุด 30%</h5>
+          <p>จองวันนี้ – เดินทางได้ถึงสิ้นเดือนนี้!</p>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item position-relative">
+        <img src="../assets/img/promo2.jpg" class="d-block w-100" alt="Promo 2">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-caption">
+          <h5>🌏 เที่ยวบินต่างประเทศสุดคุ้ม</h5>
+          <p>บินไปกัวลาลัมเปอร์ · สิงคโปร์ · โตเกียว ราคาพิเศษ</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item position-relative">
+        <img src="../assets/img/promo3.jpg" class="d-block w-100" alt="Promo 3">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-caption">
+          <h5>🎁 โปรพิเศษสำหรับสมาชิกใหม่</h5>
+          <p>สมัครสมาชิกวันนี้ รับส่วนลดเที่ยวบินแรก 10%</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#promoCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#promoCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- 🔹 Custom Style -->
+  <style>
+    .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 145, 255, 0.45), rgba(153, 0, 255, 0.45));
+    }
+    .carousel-caption {
+      bottom: 2rem;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+    }
+    .carousel-caption h5 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .carousel-caption p {
+      font-size: 1rem;
+      color: #e8e8e8;
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 50%;
+      padding: 12px;
+    }
+    .carousel-control-prev-icon:hover,
+    .carousel-control-next-icon:hover {
+      background-color: rgba(255, 255, 255, 1);
+    }
+
+    /* 🔹 ปรับขนาด Carousel ให้พอดี */
+    #promoCarousel {
+      max-width: 100%;
+      height: 380px;
+      overflow: hidden;
+      border-radius: 20px;
+      margin: 0 auto 1.5rem auto;
+    }
+    #promoCarousel .carousel-item img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+    }
+
+    /* 📱 สำหรับจอมือถือ */
+    @media (max-width: 768px) {
+      #promoCarousel {
+        height: 250px;
+      }
+      #promoCarousel .carousel-item img {
+        height: 250px;
+      }
+    }
+  </style>
+
+  <!-- 🔹 Hero Section -->
   <section class="hero-bg py-5 mt-2">
     <div class="container position-relative">
       <div class="row align-items-center">
+
+        <!-- Left side text -->
         <div class="col-lg-7 text-center text-lg-start">
           <span class="hero-badge mb-3">
             <i class="bi bi-airplane"></i> FlightSys · Booking made simple
           </span>
-          <h1 class="hero-title display-5 fw-bold mb-3">จองตั๋วเครื่องบิน <span class="text-warning">ง่าย ครบ</span> จบในที่เดียว</h1>
-          <p class="hero-sub fs-5 mb-4">เข้าสู่ระบบเพื่อเริ่มต้นค้นหา เปรียบเทียบราคา และล็อกที่นั่งแบบเรียลไทม์</p>
+          <h1 class="hero-title display-5 fw-bold mb-3">
+            จองตั๋วเครื่องบิน <span class="text-warning">ง่าย ครบ</span> จบในที่เดียว
+          </h1>
+          <p class="hero-sub fs-5 mb-4">
+            เข้าสู่ระบบเพื่อเริ่มต้นค้นหา เปรียบเทียบราคา และล็อกที่นั่งแบบเรียลไทม์
+          </p>
         </div>
 
-        <!-- Login Card -->
+        <!-- Right side login card -->
         <div class="col-lg-5 mt-4 mt-lg-0">
           <div class="glass-card p-4 p-lg-5">
             <div class="d-flex align-items-center mb-3">
-              <div class="rounded-circle bg-primary-subtle p-2 me-2"><i class="bi bi-person fs-5 text-primary"></i></div>
+              <div class="rounded-circle bg-primary-subtle p-2 me-2">
+                <i class="bi bi-person fs-5 text-primary"></i>
+              </div>
               <h3 class="m-0">เข้าสู่ระบบ</h3>
             </div>
 
@@ -36,8 +146,7 @@ require_once __DIR__.'/../includes/csrf.php';
               <div class="mb-2">
                 <label class="form-label">Password</label>
                 <div class="position-relative">
-                  <input type="password" name="password" id="loginPass"
-                         class="form-control form-control-lg pe-5" placeholder="••••••••" required>
+                  <input type="password" name="password" id="loginPass" class="form-control form-control-lg pe-5" placeholder="••••••••" required>
                   <button type="button" class="btn-eye" data-target="#loginPass" aria-label="แสดง/ซ่อนรหัสผ่าน" title="แสดง/ซ่อนรหัสผ่าน">
                     <i class="bi bi-eye-slash"></i>
                   </button>
@@ -70,12 +179,19 @@ require_once __DIR__.'/../includes/csrf.php';
 
   <script>
     // toggle eye for password
-    document.addEventListener('click', function(e){
-      const btn = e.target.closest('.btn-eye'); if(!btn) return;
-      const sel = btn.getAttribute('data-target'); const input = document.querySelector(sel);
-      if(!input) return;
-      const show = input.type === 'password'; input.type = show ? 'text' : 'password';
-      const i = btn.querySelector('i'); if(i){ i.classList.toggle('bi-eye', show); i.classList.toggle('bi-eye-slash', !show); }
+    document.addEventListener('click', function (e) {
+      const btn = e.target.closest('.btn-eye');
+      if (!btn) return;
+      const sel = btn.getAttribute('data-target');
+      const input = document.querySelector(sel);
+      if (!input) return;
+      const show = input.type === 'password';
+      input.type = show ? 'text' : 'password';
+      const i = btn.querySelector('i');
+      if (i) {
+        i.classList.toggle('bi-eye', show);
+        i.classList.toggle('bi-eye-slash', !show);
+      }
     });
   </script>
 
@@ -89,6 +205,7 @@ require_once __DIR__.'/../includes/csrf.php';
           <h1 class="hero-title display-5 fw-bold mb-3">พร้อมจองเที่ยวบินแล้ว</h1>
           <p class="hero-sub fs-5 mb-4">ค้นหาเปรียบเทียบราคา แล้วล็อกที่นั่งได้ทันที</p>
         </div>
+
         <div class="col-lg-5 mt-4 mt-lg-0">
           <div class="glass-card p-4 p-lg-5">
             <h3 class="mb-3">ค้นหาเที่ยวบิน</h3>
@@ -113,7 +230,6 @@ require_once __DIR__.'/../includes/csrf.php';
                 <button type="submit" class="btn btn-gradient btn-lg">ค้นหา</button>
               </div>
             </form>
-
           </div>
         </div>
       </div>
@@ -125,4 +241,4 @@ require_once __DIR__.'/../includes/csrf.php';
   </section>
 <?php endif; ?>
 
-<?php require_once __DIR__.'/../includes/footer.php'; ?>
+<?php require_once __DIR__ . '/../includes/footer.php'; ?>

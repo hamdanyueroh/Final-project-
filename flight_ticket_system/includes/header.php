@@ -23,7 +23,9 @@ $ADMIN_URL = rtrim(str_replace('/public/','/admin/', BASE_URL),'/').'/';
       crossorigin="anonymous">
 <link rel="stylesheet"
       href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      media="print" onload="this.media='all'"><noscript>
+      media="print" onload="this.media='all'">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <noscript>
   <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 <!-- Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
